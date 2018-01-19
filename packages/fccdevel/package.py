@@ -35,21 +35,60 @@ class Fccdevel(PackageBase):
 
     version('1.0', 'e2b724dfcc31d735897971db91be89ff')
 
+    variant('build_type', default='RelWithDebInfo',
+            description='The build type to build',
+            values=('Debug', 'Release', 'RelWithDebInfo'))
+
+    # CMake
     depends_on('cmake', type='build')
+
+    # DD4hep
     depends_on('dd4hep')
-    depends_on('delphes')
-    depends_on('fastjet')
-    depends_on('fcc-edm')
-    depends_on('fcc-physics')
-    depends_on('gaudi')
-    depends_on('geant4')
+
+    # Delphes
+    depends_on('delphes build_type=Debug', when='build_type=Debug')
+    depends_on('delphes build_type=Release', when='build_type=Release')
+    depends_on('delphes build_type=RelWithDebInfo', when='build_type=RelWithDebInfo')
+
+    # FCC-edm
+    depends_on('fcc-edm build_type=Debug', when='build_type=Debug')
+    depends_on('fcc-edm build_type=Release', when='build_type=Release')
+    depends_on('fcc-edm build_type=RelWithDebInfo', when='build_type=RelWithDebInfo')
+
+    # FCC-physics
+    depends_on('fcc-physics build_type=Debug', when='build_type=Debug')
+    depends_on('fcc-physics build_type=Release', when='build_type=Release')
+    depends_on('fcc-physics build_type=Release', when='build_type=Release')
+
+    # Gaudi
+    depends_on('gaudi build_type=Debug', when='build_type=Debug')
+    depends_on('gaudi build_type=Release', when='build_type=Release')
+    depends_on('gaudi build_type=RelWithDebInfo', when='build_type=RelWithDebInfo')
+
+    # Geant4
+    depends_on('geant4 build_type=Debug', when='build_type=Debug')
+    depends_on('geant4 build_type=Release', when='build_type=Release')
+    depends_on('geant4 build_type=RelWithDebInfo', when='build_type=RelWithDebInfo')
+
+    # ACTS-core
+    depends_on('acts-core build_type=Debug', when='build_type=Debug')
+    depends_on('acts-core build_type=Release', when='build_type=Release')
+    depends_on('acts-core build_type=RelWithDebInfo', when='build_type=RelWithDebInfo')
+
+    # papas
+    depends_on('papas build_type=Debug', when='build_type=Debug')
+    depends_on('papas build_type=Release', when='build_type=Release')
+    depends_on('papas build_type=RelWithDebInfo', when='build_type=RelWithDebInfo')
+
+    # heppy
+    depends_on('heppy')
+
+    # LCG Externals
     depends_on('hepmc')
     depends_on('pythia8')
     depends_on('root')
     depends_on('tbb')
-    depends_on('acts-core')
-    depends_on('papas')
-    depends_on('heppy')
+    depends_on('fastjet')
 
     def build(self, spec, prefix):
         pass

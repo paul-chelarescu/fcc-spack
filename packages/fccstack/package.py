@@ -35,9 +35,17 @@ class Fccstack(PackageBase):
 
     version('1.0', 'e2b724dfcc31d735897971db91be89ff')
 
-    depends_on('fccdevel')
-    depends_on('fccsw')
-    #depends_on('heppy') # As cmake package
+    variant('build_type', default='RelWithDebInfo',
+            description='The build type to build',
+            values=('Debug', 'Release', 'RelWithDebInfo'))
+
+    depends_on('fccdevel build_type=Debug', when='build_type=Debug')
+    depends_on('fccdevel build_type=Release', when='build_type=Release')
+    depends_on('fccdevel build_type=RelWithDebInfo', when='build_type=RelWithDebInfo')
+
+    depends_on('fccsw build_type=Debug', when='build_type=Debug')
+    depends_on('fccsw build_type=Release', when='build_type=Release')
+    depends_on('fccsw build_type=RelWithDebInfo', when='build_type=RelWithDebInfo')
 
     def build(self, spec, prefix):
         pass

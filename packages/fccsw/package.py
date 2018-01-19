@@ -35,6 +35,10 @@ class Fccsw(CMakePackage):
     version('0.5.1', 'e2e6e6fa40373c3a14ea823bb9bc0810')
     version('0.5', 'f2c849608ac1ab175f432a5e55dbe673')
 
+    variant('build_type', default='RelWithDebInfo',
+            description='The build type to build',
+            values=('Debug', 'Release', 'RelWithDebInfo'))
+
     depends_on('cmake', type='build')
     depends_on('dd4hep')
     depends_on('delphes')
@@ -48,9 +52,3 @@ class Fccsw(CMakePackage):
     depends_on('tbb')
     depends_on('acts-core')
     depends_on('papas')
-
-    def configure_args(self):
-        spec = self.spec
-        return [
-            '-DCMAKE_BUILD_TYPE:STRING=%s' ('Debug' if '+debug' in spec else 'Release')
-        ]
