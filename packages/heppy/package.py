@@ -33,6 +33,8 @@ class Heppy(Package):
     url      = "heppy"
 
     version('develop', git='https://github.com/HEP-FCC/heppy.git')
+    version('v2.0', git='https://github.com/HEP-FCC/heppy.git',
+                    tag='v2.0')
 
     depends_on('py-pyyaml')
     depends_on('py-gitpython')
