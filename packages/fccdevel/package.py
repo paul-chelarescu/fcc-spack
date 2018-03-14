@@ -50,7 +50,6 @@ class Fccdevel(PackageBase):
     depends_on('acts-core')
     depends_on('papas')
     depends_on('heppy')
-    depends_on('tricktrack')
 
     def build(self, spec, prefix):
         pass
