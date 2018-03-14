@@ -52,7 +52,7 @@ class Fccsw(CMakePackage):
     depends_on('papas')
     depends_on('xerces-c')
 
-    patch('permissions.patch', when='@0.9')
+    patch('permissions.patch', when='@:0.9')
 
     def setup_environment(self, spack_env, run_env):
         # Need to explicitly add DD4hep libs to the LD_LIBRARY_PATH since
