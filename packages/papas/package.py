@@ -45,5 +45,16 @@ class Papas(CMakePackage):
     depends_on('podio')
     depends_on('pythia8')
 
+    if self.compiler.cxx17_flag:
+        patch('CMakeLists17.patch')
+
+    def cmake_args(self):
+        options = []
+        if self.compiler.cxx14_flag:
+            options.extend(["-DCMAKE_CXX_FLAGS=-std=c++14"])
+        elif self.compiler.cxx17_flag:
+            options.extend(["-DCMAKE_CXX_FLAGS=-std=c++17"])
+        return options
+
     def setup_dependent_environment(self, spack_env, run_env, dspec):
         spack_env.set('PAPAS', self.prefix)

@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f741952..43a4790 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -36,10 +36,8 @@ foreach(p LIB BIN INCLUDE CMAKE)
+   endif()
+ endforeach()
+ 
+-# Set up C++14
+-set(CPP_STANDARD_FLAGS "-std=c++14")
+ if (${APPLE})
+-    set(CPP_STANDARD_FLAGS "-std=c++14\ -stdlib=libc++")
++    set(CPP_STANDARD_FLAGS "-stdlib=libc++")
+ endif()
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -DDROP_CGAL ${CPP_STANDARD_FLAGS} -Wall -Wextra -Wpedantic -Wno-unused-variable -Wno-unused-parameter")
+ 

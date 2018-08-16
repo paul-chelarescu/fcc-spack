@@ -61,4 +61,8 @@ class ActsCore(CMakePackage):
             "-DBUILD_TGEO_PLUGIN=ON",
             "-DEIGEN_INCLUDE_DIR=%s" % spec['eigen'].prefix + "/include/eigen3"
         ]
+        if self.compiler.cxx14_flag:
+            args.extend(["-DCMAKE_CXX_FLAGS=-std=c++14"])
+        elif self.compiler.cxx17_flag:
+            args.extend(["-DCMAKE_CXX_FLAGS=-std=c++17"])
         return args
