@@ -53,8 +53,7 @@ class FccEdm(CMakePackage):
     depends_on('root')
     depends_on('podio')
 
-    if self.compiler.cxx17_flag:
-        patch('CMakeLists17.patch')
+    patch('CMakeLists17.patch')
 
     def cmake_args(self):
         options = []

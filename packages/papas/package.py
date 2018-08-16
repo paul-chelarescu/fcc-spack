@@ -45,8 +45,7 @@ class Papas(CMakePackage):
     depends_on('podio')
     depends_on('pythia8')
 
-    if self.compiler.cxx17_flag:
-        patch('CMakeLists17.patch')
+    patch('CMakeLists17.patch')
 
     def cmake_args(self):
         options = []
