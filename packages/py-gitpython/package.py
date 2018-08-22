@@ -34,4 +34,5 @@ class PyGitpython(PythonPackage):
 
     version('2.1.8', '7a94ee1b923fb772a2a0c6649430a17c')
 
+    depends_on('py-setuptools-git')
     depends_on('git', type=('build', 'run'))
