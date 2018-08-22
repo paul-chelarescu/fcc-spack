@@ -51,6 +51,7 @@ class Fccdevel(PackageBase):
     depends_on('papas')
     depends_on('heppy')
     depends_on('tricktrack')
+    depends_on('pkg-config') # xz archives cannot be extracted currently
 
     def build(self, spec, prefix):
         pass
